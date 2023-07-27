@@ -9,7 +9,19 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <a class="mat-display-4" mat-button routerLink="">Conversor de Moedas</a>
+      <a
+        class="d-flex align-items-center justify-content-center"
+        mat-button
+        routerLink=""
+      >
+        <img
+          src="../../favicon.ico"
+          alt="navbar-brand-img"
+          class="img-fluid"
+          [style]="{ width: '2.5rem' }"
+        />
+        <span class="fs-4">Conversor de Moedas</span>
+      </a>
       <span class="spacer"></span>
       <div class="link-list" *ngIf="isUpMedium$ | async">
         <a mat-button routerLink="coins">Moedas</a>
