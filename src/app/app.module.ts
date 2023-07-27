@@ -15,8 +15,22 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+// Pages import
+import { HomeComponent } from 'src/pages/home/home.component';
+import { CoinsListComponent } from 'src/pages/coins-list/coins-list.component';
+import { ConverterComponent } from 'src/pages/converter/converter.component';
+import { HistoryComponent } from 'src/pages/history/history.component';
+
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent, TableComponent],
+  declarations: [
+    AppComponent,
+    ToolbarComponent,
+    TableComponent,
+    HomeComponent,
+    CoinsListComponent,
+    ConverterComponent,
+    HistoryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

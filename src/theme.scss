@@ -2,20 +2,20 @@
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$red-palette, 500);
-$my-accent: mat.define-palette(mat.$orange-palette, 400, 600, A100);
-$my-black: mat.define-palette(mat.$grey-palette, 900);
+$app-primary: mat.define-palette(mat.$red-palette, 500);
+$app-accent: mat.define-palette(mat.$orange-palette, 400, 600, A100);
+$app-black: mat.define-palette(mat.$grey-palette, 900);
 
-$my-theme: mat.define-light-theme(
+$app-light-theme: mat.define-light-theme(
   (
     color: (
-      primary: $my-primary,
-      accent: $my-accent,
-      black: $my-black,
+      primary: $app-primary,
+      accent: $app-accent,
+      black: $app-black,
     ),
     typography: mat.define-typography-config(),
     density: 0,
   )
 );
 
-@include mat.all-component-themes($my-theme);
+@include mat.all-component-themes($app-light-theme);
