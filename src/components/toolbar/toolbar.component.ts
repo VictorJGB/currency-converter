@@ -6,14 +6,22 @@ import { map, shareReplay } from 'rxjs/operators';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.XSmall, Breakpoints.Small])
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
+      shareReplay()
+    );
+
+  isUpMedium$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+    .pipe(
+      map((result) => result.matches),
       shareReplay()
     );
 }

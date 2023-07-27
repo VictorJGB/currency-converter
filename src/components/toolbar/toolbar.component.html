@@ -1,12 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
+  <mat-sidenav #drawer class="sidenav" fixedInViewport>
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
@@ -16,6 +9,13 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <span>Conversor de Moedas</span>
+      <span class="spacer"></span>
+      <div class="link-list" *ngIf="isUpMedium$ | async">
+        <a mat-button color="black" href="https://">Moedas</a>
+        <a mat-button href="https://">Conversor</a>
+        <a mat-button href="https://">Histórico</a>
+      </div>
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -25,14 +25,6 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Conversor de Moedas</span>
-      <span class="spacer"></span>
-      <div class="link-list">
-        <a mat-button color="black" href="https://">Moedas</a>
-        <a mat-button href="https://">Conversor</a>
-        <a mat-button href="https://">Link</a>
-        <button mat-raised-button color="accent">Accent</button>
-      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
