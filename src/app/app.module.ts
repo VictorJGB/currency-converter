@@ -22,6 +22,7 @@ import { TableComponent } from '../components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatPaginatorModule,
     MatSortModule,
     FlexLayoutModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

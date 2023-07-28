@@ -1,8 +1,40 @@
 <div
-  class="text-center"
+  class="h-100 w-100 p-3 text-center"
   fxLayout="column"
   fXLayoutAlign="center center"
-  fxFlexFill
 >
-  <div class="container"><h1 class="fs-1">Home Works!!</h1></div>
+  <div
+    class="row h-100 flex-column flex-lg-row align-items-center justify-content-center"
+  >
+    <div class="col col-lg-6 d-flex align-items-center justify-content-center">
+      <img
+        loading="lazy"
+        src="../../assets/person-thinking.png"
+        alt=""
+        class="img-fluid"
+      />
+    </div>
+    <div
+      class="col col-lg-6 gap-3 d-flex flex-column align-items-center justify-content-center"
+    >
+      <h2 class="h2 display-5 fw-medium">Sobre o projeto</h2>
+      <p class="lead">
+        O objetivo deste projeto é desenvolver um aplicativo que permita aos
+        usuários converter moedas de forma rápida e fácil.O conversor deve ser
+        fácil de usar e deve fornecer as taxas de câmbio mais atualizadas.
+      </p>
+      <a
+        mat-fab
+        extended
+        matTooltip="API utilizada no projeto"
+        color="accent"
+        class="text-white text-center fs-5"
+        href="https://exchangerate.host/#/"
+        target="_blank"
+      >
+        <mat-icon class="fs-4">open_in_new</mat-icon>
+        API
+      </a>
+    </div>
+  </div>
 </div>
