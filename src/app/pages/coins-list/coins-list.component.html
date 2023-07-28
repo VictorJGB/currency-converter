@@ -2,10 +2,6 @@
   class="container h-100 w-100 d-flex flex-column align-items-center justify-content-center"
 >
   <h1 class="display-h2">Listagem de moedas</h1>
-  <div class="row" *ngFor="let symbol of symbolsList | keyvalue">
-    <div class="col">{{ symbol.key }}</div>
-    <div class="col">{{ symbol.value.description }}</div>
-  </div>
 
   <app-table />
 </div>
