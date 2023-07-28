@@ -7,19 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 // Pages import
-import { HomeComponent } from 'src/pages/home/home.component';
-import { CoinsListComponent } from 'src/pages/coins-list/coins-list.component';
-import { ConverterComponent } from 'src/pages/converter/converter.component';
-import { HistoryComponent } from 'src/pages/history/history.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CoinsListComponent } from './pages/coins-list/coins-list.component';
+import { ConverterComponent } from './pages/converter/converter.component';
+import { HistoryComponent } from './pages/history/history.component';
+
+// Components import
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { TableComponent } from './components/table/table.component';
 
 //External Libries Imports
-import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { TableComponent } from '../components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
