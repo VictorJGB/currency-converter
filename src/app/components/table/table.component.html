@@ -7,7 +7,12 @@
   <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort>
     <!-- Code Column -->
     <ng-container matColumnDef="code">
-      <th class="fs-5" mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th
+        class="fw-bolder fs-6"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+      >
         Símbolo
       </th>
       <td mat-cell *matCellDef="let row">{{ row.code }}</td>
@@ -15,7 +20,12 @@
 
     <!-- Description Column -->
     <ng-container matColumnDef="description">
-      <th class="fs-5" mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th
+        class="fw-bolder fs-6"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+      >
         Descrição
       </th>
       <td mat-cell *matCellDef="let row">{{ row.description }}</td>

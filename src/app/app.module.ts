@@ -16,6 +16,10 @@ import { HistoryComponent } from './pages/history/history.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TableComponent } from './components/table/table.component';
 
+// SVG Icons
+import { AngularIconComponent } from './components/angular-icon/angular-icon.component';
+import { BootstrapIconComponent } from './components/bootstrap-icon/bootstrap-icon.component';
+
 //External Libries Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,6 +43,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CoinsListComponent,
     ConverterComponent,
     HistoryComponent,
+    AngularIconComponent,
+    BootstrapIconComponent,
   ],
   imports: [
     BrowserModule,
