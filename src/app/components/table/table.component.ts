@@ -8,11 +8,6 @@ import SymbolType from 'src/app/interfaces/SymbolType';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 
-export interface UserData {
-  symbol: string;
-  description: string;
-}
-
 /**
  * @title Data table with sorting, pagination, and filtering.
  */
@@ -23,16 +18,17 @@ export interface UserData {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['symbol, description'];
+  displayedColumns: string[] = ['code', 'description'];
   symbols: Symbol[] = [];
-  dataSource!: MatTableDataSource<SymbolType>;
+  dataSource!: MatTableDataSource<Symbol>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private coinService: CoinService) {
     this.listCoins();
-    console.log(this.symbols);
+    this.dataSource = new MatTableDataSource(this.symbols);
+    console.log(this.dataSource);
   }
 
   ngOnInit() {}
