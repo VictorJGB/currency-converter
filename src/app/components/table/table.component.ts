@@ -28,7 +28,6 @@ export class TableComponent implements AfterViewInit {
   constructor(private coinService: CoinService) {
     this.listCoins();
     this.dataSource = new MatTableDataSource(this.symbols);
-    console.log(this.dataSource);
   }
 
   ngOnInit() {}
