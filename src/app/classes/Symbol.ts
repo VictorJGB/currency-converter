@@ -2,9 +2,9 @@ export default class Symbol {
   private _code: string = '';
   private _description: string = '';
 
-  constructor(code: string, description: string) {
-    this._code = code;
+  constructor(description: string, code: string) {
     this._description = description;
+    this._code = code;
   }
 
   get Code(): string {

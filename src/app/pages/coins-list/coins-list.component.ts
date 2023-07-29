@@ -11,16 +11,5 @@ import Symbol from 'src/app/classes/Symbol';
 export class CoinsListComponent implements OnInit {
   constructor(private coinService: CoinService) {}
 
-  ngOnInit() {
-    this.listCoins();
-  }
-
-  protected symbolsList: {
-    [key: string]: { code: string; description: string };
-  } = {};
-  protected listCoins() {
-    this.coinService.getCoins().subscribe((data: SymbolsResponse) => {
-      this.symbolsList = data.symbols;
-    });
-  }
+  ngOnInit() {}
 }
