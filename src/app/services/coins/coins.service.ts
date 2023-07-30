@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
-import SymbolsResponse from '../../interfaces/SymbolsResponse';
-import SymbolType from 'src/app/interfaces/SymbolType';
+import SymbolsResponse from '../../interfaces/symbols/SymbolsResponse';
+import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import { API_BASE_URL } from 'src/env/environment';
 

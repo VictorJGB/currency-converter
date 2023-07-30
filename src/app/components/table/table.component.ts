@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import Symbol from 'src/app/classes/Symbol';
-import SymbolType from 'src/app/interfaces/SymbolType';
+import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 

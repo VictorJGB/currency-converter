@@ -50,5 +50,7 @@
     [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page of symbols"
     color="primary"
+    *ngIf="dataSource"
   ></mat-paginator>
+  <mat-spinner *ngIf="!dataSource"></mat-spinner>
 </div>
