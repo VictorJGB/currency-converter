@@ -1,3 +1,59 @@
-<p>
-  converter works!
-</p>
+<div
+  class="container-fluid h-100 w-100 gap-3 d-flex flex-column align-items-center justify-content-center"
+>
+  <h1 class="h1 display-h2">Conversão de moedas</h1>
+
+  <div class="w-100 h-75 px-3">
+    <form
+      class="gap-2 flex-wrap d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="gap-4 flex-wrap d-flex align-items-center justify-content-center"
+      >
+        <mat-form-field>
+          <mat-label>Moeda de origem</mat-label>
+          <mat-select
+            [(ngModel)]="selectedOriginCurrency"
+            name="originCurrency"
+          >
+            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
+              {{ symbol.code }} ({{ symbol.description }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Moeda de destino</mat-label>
+          <mat-select
+            [(ngModel)]="selectedDestinyCurrency"
+            name="destinyCurrency"
+          >
+            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
+              {{ symbol.code }} ({{ symbol.description }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Valor</mat-label>
+          <input type="number" matInput placeholder="Ex. 10.5" min="0" />
+          <mat-error *ngIf="valueFormControl.hasError('required')">
+            Valor <strong>inválido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div
+        class="container w-100 d-flex align-items-center justify-content-center"
+      >
+        <button
+          mat-raised-button
+          color="primary"
+          class="fs-5 p-4"
+          type="submit"
+        >
+          Converter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
