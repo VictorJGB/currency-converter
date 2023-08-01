@@ -6,28 +6,23 @@
   <div class="w-100 h-75 px-3">
     <form
       class="gap-2 flex-wrap d-flex align-items-center justify-content-center"
+      [formGroup]="convertForm"
+      (ngSubmit)="onSubmit()"
     >
       <div
         class="gap-4 flex-wrap d-flex align-items-center justify-content-center"
       >
         <mat-form-field>
           <mat-label>Moeda de origem</mat-label>
-          <mat-select
-            [(ngModel)]="selectedOriginCurrency"
-            name="originCurrency"
-          >
+          <mat-select formControlName="originCurrency" name="originCurrency">
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} ({{ symbol.description }})
             </mat-option>
           </mat-select>
         </mat-form-field>
-
         <mat-form-field>
           <mat-label>Moeda de destino</mat-label>
-          <mat-select
-            [(ngModel)]="selectedDestinyCurrency"
-            name="destinyCurrency"
-          >
+          <mat-select formControlName="destinyCurrency" name="destinyCurrency">
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} ({{ symbol.description }})
             </mat-option>
@@ -36,10 +31,17 @@
 
         <mat-form-field>
           <mat-label>Valor</mat-label>
-          <input type="number" matInput placeholder="Ex. 10.5" min="0" />
-          <mat-error *ngIf="valueFormControl.hasError('required')">
+          <input
+            type="number"
+            matInput
+            formControlName="convertValue"
+            name="convertValue"
+            placeholder="Ex. 10.5"
+            min="0"
+          />
+          <!-- <mat-error *ngIf="convertValue.hasError('required')">
             Valor <strong>inválido</strong>
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
       </div>
       <div

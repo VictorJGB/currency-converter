@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+
 import ConvertResponse from 'src/app/interfaces/convert/ConvertResponse';
 import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
@@ -7,12 +14,6 @@ import Symbol from '../../classes/Symbol';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 import { ConvertCurrencyService } from 'src/app/services/convertCurrency/convert-currency.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 
 @Component({
   selector: 'app-converter',
@@ -22,24 +23,35 @@ import {
 export class ConverterComponent implements OnInit {
   responseData!: ConvertResponse;
   symbols: Symbol[] = [];
-  selectedOriginCurrency: string = '';
-  selectedDestinyCurrency: string = '';
-  convertAmount: number = 0.0;
-  valueFormControl = new FormControl('', [
-    Validators.required,
-    Validators.min(0),
-  ]);
+
+  convertForm!: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private convertService: ConvertCurrencyService,
-    private coinService: CoinService,
-    private formBuilder: FormBuilder
+    private coinService: CoinService
   ) {
+    this.createForm();
     this.convertCurrency('USD', 'BRL', 10);
     this.listCoins();
   }
 
   ngOnInit() {}
+
+  protected createForm() {
+    this.convertForm = this.formBuilder.group({
+      originCurrency: new FormControl('', [Validators.required]),
+      destinyCurrency: new FormControl('', [Validators.required]),
+      convertValue: new FormControl('', [
+        Validators.required,
+        Validators.min(0),
+      ]),
+    });
+  }
+
+  protected onSubmit() {
+    console.log(this.convertForm.value);
+  }
 
   protected convertCurrency(from: string, to: string, amount: number) {
     this.convertService.convertCoin(from, to, amount).subscribe({
