@@ -16,6 +16,7 @@ import { HistoryComponent } from './pages/history/history.component';
 // Components import
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TableComponent } from './components/table/table.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // SVG Icons
 import { AngularIconComponent } from './components/angular-icon/angular-icon.component';
@@ -41,6 +42,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     ToolbarComponent,
+    FooterComponent,
     TableComponent,
     HomeComponent,
     CoinsListComponent,
