@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 // SVG Icons
 import { AngularIconComponent } from './components/angular-icon/angular-icon.component';
 import { BootstrapIconComponent } from './components/bootstrap-icon/bootstrap-icon.component';
+import { GithubIconComponent } from './components/github-icon/github-icon.component';
 
 //External Libries Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -50,6 +51,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HistoryComponent,
     AngularIconComponent,
     BootstrapIconComponent,
+    GithubIconComponent,
   ],
   imports: [
     BrowserModule,
