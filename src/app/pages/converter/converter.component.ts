@@ -31,30 +31,31 @@ export class ConverterComponent implements OnInit {
     private convertService: ConvertCurrencyService,
     private coinService: CoinService
   ) {
-    this.createForm();
-    this.convertCurrency('USD', 'BRL', 10);
     this.listCoins();
+    this.createForm();
   }
 
   ngOnInit() {}
 
   protected createForm() {
     this.convertForm = this.formBuilder.group({
-      originCurrency: new FormControl('', [Validators.required]),
-      destinyCurrency: new FormControl('', [Validators.required]),
-      convertValue: new FormControl('', [
-        Validators.required,
-        Validators.min(0),
-      ]),
+      originCurrency: ['', Validators.required],
+      destinyCurrency: ['', Validators.required],
+      convertValue: ['', [Validators.required, Validators.min(0)]],
     });
   }
 
   protected onSubmit() {
-    console.log(this.convertForm.value);
+    const originCurrency = this.convertForm.value.originCurrency;
+    const destinyCurrency = this.convertForm.value.destinyCurrency;
+    const value = this.convertForm.value.convertValue;
+
+    this.convertCurrency(originCurrency, destinyCurrency, value);
+    console.log(this.responseData);
   }
 
   protected convertCurrency(from: string, to: string, amount: number) {
-    this.convertService.convertCoin(from, to, amount).subscribe({
+    this.convertService.convertCoin(from, to, amount, 2).subscribe({
       next: (data: ConvertResponse) => {
         this.responseData = data;
       },

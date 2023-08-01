@@ -1,9 +1,9 @@
 <div
-  class="container-fluid h-100 w-100 gap-3 d-flex flex-column align-items-center justify-content-center"
+  class="container-fluid h-100 w-100 gap-3 mt-5 d-flex flex-column align-items-center justify-content-start"
 >
   <h1 class="h1 display-h2">Conversão de moedas</h1>
 
-  <div class="w-100 h-75 px-3">
+  <div class="w-100 px-3">
     <form
       class="gap-2 flex-wrap d-flex align-items-center justify-content-center"
       [formGroup]="convertForm"
@@ -57,5 +57,15 @@
         </button>
       </div>
     </form>
+  </div>
+
+  <div
+    class="container w-100 d-flex flex-column align-items-startjustify-content-center"
+    *ngIf="responseData"
+  >
+    <h1 class="h1 display-3">Resultados</h1>
+
+    <span class="fs-5 fw-semibold">resultado: {{ responseData.result }}</span>
+    <span class="fs-5 fw-semibold"> taxa: {{ responseData.info.rate }} </span>
   </div>
 </div>
