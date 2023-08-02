@@ -5,7 +5,7 @@
 
   <div class="w-100 px-3">
     <form
-      class="gap-2 flex-wrap d-flex align-items-center justify-content-center"
+      class="gap-4 flex-wrap d-flex align-items-center justify-content-center"
       [formGroup]="convertForm"
       (ngSubmit)="onSubmit()"
     >
@@ -13,45 +13,53 @@
         class="gap-4 flex-wrap d-flex align-items-center justify-content-center"
       >
         <!-- Moeda de origem -->
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Moeda de origem</mat-label>
-          <mat-select
-            [disabled]="loaderService.isLoading.value"
-            formControlName="originCurrency"
-            name="originCurrency"
-          >
+          <mat-select formControlName="originCurrency" name="originCurrency">
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.description }} ({{ symbol.code }})
             </mat-option>
           </mat-select>
+          <mat-error
+            *ngIf="convertForm.get('originCurrency')?.hasError('required')"
+            >Escolha uma das opções</mat-error
+          >
         </mat-form-field>
 
         <!-- Moeda de destino -->
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Moeda de destino</mat-label>
-          <mat-select
-            [disabled]="loaderService.isLoading.value"
-            formControlName="destinyCurrency"
-            name="destinyCurrency"
-          >
+          <mat-select formControlName="destinyCurrency" name="destinyCurrency">
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.description }} ({{ symbol.code }})
             </mat-option>
           </mat-select>
+          <mat-error
+            *ngIf="convertForm.get('destinyCurrency')?.hasError('required')"
+          >
+            Escolha uma das opções
+          </mat-error>
         </mat-form-field>
 
         <!-- Valor -->
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Valor</mat-label>
           <input
             type="number"
-            [disabled]="loaderService.isLoading.value"
             matInput
             formControlName="convertValue"
             name="convertValue"
             placeholder="Ex. 10.5"
             min="0"
           />
+          <mat-error
+            *ngIf="convertForm.get('convertValue')?.hasError('required')"
+          >
+            Valor nulo
+          </mat-error>
+          <mat-error *ngIf="convertForm.get('convertValue')?.hasError('min')"
+            >Valor deve ser maior que 0</mat-error
+          >
         </mat-form-field>
       </div>
       <div
@@ -62,7 +70,7 @@
           color="primary"
           class="fs-5 p-4"
           type="submit"
-          [disabled]="loaderService.isLoading.value"
+          [disabled]="loaderService.isLoading.value || !convertForm.valid"
         >
           Converter
         </button>

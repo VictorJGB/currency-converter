@@ -37,8 +37,8 @@ export class ConverterComponent implements OnInit {
 
   protected createForm() {
     this.convertForm = this.formBuilder.group({
-      originCurrency: ['', [Validators.required, Validators.minLength(3)]],
-      destinyCurrency: ['', [Validators.required, Validators.minLength(3)]],
+      originCurrency: ['', [Validators.required]],
+      destinyCurrency: ['', [Validators.required]],
       convertValue: ['', [Validators.required, Validators.min(1)]],
     });
   }
@@ -48,8 +48,10 @@ export class ConverterComponent implements OnInit {
     const originCurrency = this.convertForm.value.originCurrency;
     const destinyCurrency = this.convertForm.value.destinyCurrency;
     const value = this.convertForm.value.convertValue;
+    this.convertForm.disabled;
 
     this.convertCurrency(originCurrency, destinyCurrency, value);
+    this.convertForm.reset();
     console.log(this.responseData);
   }
 
