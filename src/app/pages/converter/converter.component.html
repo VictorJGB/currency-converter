@@ -39,9 +39,6 @@
             placeholder="Ex. 10.5"
             min="0"
           />
-          <!-- <mat-error *ngIf="convertValue.hasError('required')">
-            Valor <strong>inválido</strong>
-          </mat-error> -->
         </mat-form-field>
       </div>
       <div
@@ -58,6 +55,8 @@
       </div>
     </form>
   </div>
+
+  <mat-spinner *ngIf="loaderService.isLoading | async"></mat-spinner>
 
   <div
     class="container w-100 d-flex flex-column align-items-startjustify-content-center"

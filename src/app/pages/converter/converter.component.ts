@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import ConvertResponse from 'src/app/interfaces/convert/ConvertResponse';
 import SymbolType from 'src/app/interfaces/symbols/SymbolType';
@@ -14,6 +9,7 @@ import Symbol from '../../classes/Symbol';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 import { ConvertCurrencyService } from 'src/app/services/convertCurrency/convert-currency.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-converter',
@@ -29,7 +25,8 @@ export class ConverterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private convertService: ConvertCurrencyService,
-    private coinService: CoinService
+    private coinService: CoinService,
+    protected loaderService: LoaderService
   ) {
     this.listCoins();
     this.createForm();
@@ -39,9 +36,9 @@ export class ConverterComponent implements OnInit {
 
   protected createForm() {
     this.convertForm = this.formBuilder.group({
-      originCurrency: ['', Validators.required],
-      destinyCurrency: ['', Validators.required],
-      convertValue: ['', [Validators.required, Validators.min(0)]],
+      originCurrency: ['', [Validators.required, Validators.minLength(3)]],
+      destinyCurrency: ['', [Validators.required, Validators.minLength(3)]],
+      convertValue: ['', [Validators.required, Validators.min(1)]],
     });
   }
 
