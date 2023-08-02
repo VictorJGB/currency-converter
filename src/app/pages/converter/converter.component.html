@@ -12,27 +12,40 @@
       <div
         class="gap-4 flex-wrap d-flex align-items-center justify-content-center"
       >
+        <!-- Moeda de origem -->
         <mat-form-field>
           <mat-label>Moeda de origem</mat-label>
-          <mat-select formControlName="originCurrency" name="originCurrency">
+          <mat-select
+            [disabled]="loaderService.isLoading.value"
+            formControlName="originCurrency"
+            name="originCurrency"
+          >
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
-              {{ symbol.code }} ({{ symbol.description }})
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Moeda de destino</mat-label>
-          <mat-select formControlName="destinyCurrency" name="destinyCurrency">
-            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
-              {{ symbol.code }} ({{ symbol.description }})
+              {{ symbol.description }} ({{ symbol.code }})
             </mat-option>
           </mat-select>
         </mat-form-field>
 
+        <!-- Moeda de destino -->
+        <mat-form-field>
+          <mat-label>Moeda de destino</mat-label>
+          <mat-select
+            [disabled]="loaderService.isLoading.value"
+            formControlName="destinyCurrency"
+            name="destinyCurrency"
+          >
+            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
+              {{ symbol.description }} ({{ symbol.code }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Valor -->
         <mat-form-field>
           <mat-label>Valor</mat-label>
           <input
             type="number"
+            [disabled]="loaderService.isLoading.value"
             matInput
             formControlName="convertValue"
             name="convertValue"
@@ -49,6 +62,7 @@
           color="primary"
           class="fs-5 p-4"
           type="submit"
+          [disabled]="loaderService.isLoading.value"
         >
           Converter
         </button>
@@ -60,7 +74,7 @@
 
   <div
     class="container w-100 d-flex flex-column align-items-startjustify-content-center"
-    *ngIf="responseData"
+    *ngIf="isDataReturned"
   >
     <h1 class="h1 display-3">Resultados</h1>
 

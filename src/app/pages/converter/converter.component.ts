@@ -18,6 +18,7 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 })
 export class ConverterComponent implements OnInit {
   responseData!: ConvertResponse;
+  isDataReturned!: boolean;
   symbols: Symbol[] = [];
 
   convertForm!: FormGroup;
@@ -43,6 +44,7 @@ export class ConverterComponent implements OnInit {
   }
 
   protected onSubmit() {
+    this.isDataReturned = false;
     const originCurrency = this.convertForm.value.originCurrency;
     const destinyCurrency = this.convertForm.value.destinyCurrency;
     const value = this.convertForm.value.convertValue;
@@ -57,6 +59,9 @@ export class ConverterComponent implements OnInit {
         this.responseData = data;
       },
       error: (error: Error) => console.log(error),
+      complete: () => {
+        this.isDataReturned = true;
+      },
     });
   }
 
