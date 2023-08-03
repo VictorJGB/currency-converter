@@ -7,6 +7,7 @@ import Symbol from 'src/app/classes/Symbol';
 import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 /**
  * @title Data table with sorting, pagination, and filtering.

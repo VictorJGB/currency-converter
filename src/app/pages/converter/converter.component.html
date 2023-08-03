@@ -78,15 +78,75 @@
     </form>
   </div>
 
-  <mat-spinner *ngIf="loaderService.isLoading | async"></mat-spinner>
+  <mat-spinner
+    color="primary"
+    *ngIf="loaderService.isLoading | async"
+  ></mat-spinner>
 
+  <mat-divider *ngIf="isDataReturned"></mat-divider>
   <div
-    class="container w-100 d-flex flex-column align-items-startjustify-content-center"
+    class="container w-100 d-flex flex-column align-items-center justify-content-center"
     *ngIf="isDataReturned"
   >
-    <h1 class="h1 display-3">Resultados</h1>
+    <mat-card
+      class="container col-10 col-md-8 gap-5 shadow border rounded-2 border-dark border-opacity-25 flex-column align-items-center justify-content-center"
+    >
+      <mat-card-header
+        class="w-100 gap-3 d-flex flex-column align-items-center text-black"
+      >
+        <mat-card-title
+          class="fs-2 fw-semibold text-secondary-color text-center"
+        >
+          Dados iniciais
+        </mat-card-title>
+        <div class="gap-5 d-flex align-items-center justify-content-center">
+          <span
+            matTooltip="Moeda de origem"
+            class="fs-4 gap-2 d-flex align-items-center justify-content-center"
+            ><mat-icon color="primary">home_pin</mat-icon>
+            <strong class="text-black-50"
+              >{{ responseData.query.from }}
+            </strong></span
+          >
+          <span
+            matTooltip="Moeda de destino"
+            class="fs-4 gap-2 d-flex align-items-center justify-content-center"
+            ><mat-icon color="primary">location_on</mat-icon>
+            <strong class="text-black-50">{{ responseData.query.to }}</strong>
+          </span>
+          <span
+            matTooltip="Valor a se converter"
+            class="fs-4 gap-2 d-flex align-items-center justify-content-center"
+          >
+            <mat-icon color="primary">money</mat-icon>
+            <strong class="text-black-50">
+              {{ responseData.query.amount }}
+            </strong>
+          </span>
+        </div>
+      </mat-card-header>
+      <mat-card-content
+        class="w-100 gap-3 d-flex flex-column align-items-center justify-content-center text-black"
+      >
+        <h2 class="fs-2 fw-semibold">Resultados</h2>
+        <div class="gap-5 d-flex align-items-center justify-content-center">
+          <span
+            matTooltip="Valor convertido"
+            class="fs-4 gap-3 text-success fw-semibold d-flex align-items-center justify-content-center"
+          >
+            <mat-icon color="success">local_atm</mat-icon>
 
-    <span class="fs-5 fw-semibold">resultado: {{ responseData.result }}</span>
-    <span class="fs-5 fw-semibold"> taxa: {{ responseData.info.rate }} </span>
+            {{ responseData.result }}
+          </span>
+          <span
+            matTooltip="Taxa de conversão"
+            class="fs-4 gap-3 text-success fw-semibold d-flex align-items-center justify-content-center"
+          >
+            <mat-icon color="success">currency_exchange</mat-icon>
+            {{ responseData.info.rate }}
+          </span>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

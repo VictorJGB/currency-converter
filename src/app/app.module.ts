@@ -40,6 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -75,6 +77,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatCardModule,
     FlexLayoutModule,
     ReactiveFormsModule,
   ],

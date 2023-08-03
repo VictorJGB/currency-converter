@@ -1,3 +1,5 @@
+@import "./variables";
+
 * {
   margin: 0;
   padding: 0;
@@ -17,4 +19,28 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-primary-color {
+  color: $primary-color;
+}
+
+.bg-primary-color {
+  background-color: $primary-color !important;
+}
+
+.text-secondary-color {
+  color: $secondary-color !important;
+}
+
+.bg-secondary-color {
+  background-color: $secondary-color;
+}
+
+.text-warn-color {
+  color: $warn-color;
+}
+
+.text-black-color {
+  color: $black-color;
 }

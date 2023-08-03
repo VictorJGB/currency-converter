@@ -4,6 +4,7 @@
 
 $app-primary: mat.define-palette(mat.$red-palette, 500);
 $app-accent: mat.define-palette(mat.$orange-palette, 400, 600, A100);
+$app-warn: mat.define-palette(mat.$deep-orange-palette, A700);
 $app-black: mat.define-palette(mat.$grey-palette, 900);
 
 $app-light-theme: mat.define-light-theme(
@@ -11,6 +12,7 @@ $app-light-theme: mat.define-light-theme(
     color: (
       primary: $app-primary,
       accent: $app-accent,
+      warn: $app-warn,
       black: $app-black,
     ),
     typography: mat.define-typography-config(),
