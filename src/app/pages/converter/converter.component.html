@@ -94,35 +94,38 @@
       <mat-card-header
         class="w-100 gap-3 d-flex flex-column align-items-center text-black"
       >
-        <mat-card-title
-          class="fs-2 fw-semibold text-secondary-color text-center"
-        >
+        <mat-card-title class="fs-2 fw-semibold text-center">
           Dados iniciais
         </mat-card-title>
         <div class="gap-5 d-flex align-items-center justify-content-center">
           <span
-            matTooltip="Moeda de origem"
-            class="fs-4 gap-2 d-flex align-items-center justify-content-center"
-            ><mat-icon color="primary">home_pin</mat-icon>
-            <strong class="text-black-50"
-              >{{ responseData.query.from }}
-            </strong></span
-          >
-          <span
-            matTooltip="Moeda de destino"
-            class="fs-4 gap-2 d-flex align-items-center justify-content-center"
-            ><mat-icon color="primary">location_on</mat-icon>
-            <strong class="text-black-50">{{ responseData.query.to }}</strong>
-          </span>
-          <span
             matTooltip="Valor a se converter"
             class="fs-4 gap-2 d-flex align-items-center justify-content-center"
           >
-            <mat-icon color="primary">money</mat-icon>
+            <mat-icon color="primary">local_atm</mat-icon>
             <strong class="text-black-50">
               {{ responseData.query.amount }}
             </strong>
           </span>
+          <div
+            class="container gap-2 d-flex align-items-center justify-content-center"
+          >
+            <span
+              matTooltip="Moeda de origem"
+              class="fs-4 gap-2 d-flex align-items-center justify-content-center"
+            >
+              <strong class="text-black-50"
+                >{{ responseData.query.from }}
+              </strong></span
+            >
+            <mat-icon color="primary">arrow_right_alt</mat-icon>
+            <span
+              matTooltip="Moeda de destino"
+              class="fs-4 gap-2 d-flex align-items-center justify-content-center"
+            >
+              <strong class="text-black-50">{{ responseData.query.to }}</strong>
+            </span>
+          </div>
         </div>
       </mat-card-header>
       <mat-card-content
@@ -136,7 +139,7 @@
           >
             <mat-icon color="success">local_atm</mat-icon>
 
-            {{ responseData.result }}
+            {{ responseData.result }} {{ responseData.query.to }}
           </span>
           <span
             matTooltip="Taxa de conversão"

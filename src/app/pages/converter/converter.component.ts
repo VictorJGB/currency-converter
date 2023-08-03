@@ -51,7 +51,6 @@ export class ConverterComponent implements OnInit {
     this.convertForm.disabled;
 
     this.convertCurrency(originCurrency, destinyCurrency, value);
-    this.convertForm.reset();
     console.log(this.responseData);
   }
 
