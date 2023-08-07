@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8" *ngIf="dataSource">
+<div class="mat-elevation-z8" *ngIf="convertionData[0]">
   <table class="w-100 h-100" mat-table [dataSource]="dataSource" matSort>
     <!-- Data da conversão -->
     <ng-container matColumnDef="convertionDate">
@@ -60,8 +60,12 @@
 
   <mat-paginator
     class="w-100"
-    *ngIf="dataSource"
+    *ngIf="convertionData[0]"
     [pageSizeOptions]="[5, 10, 25]"
     aria-label="Selecione quantos dados serão mostrados"
   ></mat-paginator>
+</div>
+<!-- caso não haja dados -->
+<div class="container text-center">
+  <h4 *ngIf="!convertionData[0]" class="text-muted">Sem dados disponíveis</h4>
 </div>
