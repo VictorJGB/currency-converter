@@ -6,19 +6,13 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import HistoryData from 'src/app/interfaces/history/HistoryData';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
 @Component({
   selector: 'app-history-table',
   templateUrl: './history-table.component.html',
   styleUrls: ['./history-table.component.scss'],
 })
 export class HistoryTable implements AfterViewInit {
+  storageData = sessionStorage.getItem('convertion_data');
   displayedColumns: string[] = [
     'convertionDate',
     'convertionTime',
@@ -30,14 +24,15 @@ export class HistoryTable implements AfterViewInit {
     'action',
   ];
   dataSource!: MatTableDataSource<HistoryData>;
-  convertionData: HistoryData[] = JSON.parse(
-    sessionStorage.getItem('convertion_data') || ''
-  );
+  convertionData: HistoryData[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
+    if (sessionStorage.getItem('convertion_data')) {
+      this.convertionData = JSON.parse(this.storageData ?? '');
+    }
     // Assign the data to the data source for the table to render
 
     this.dataSource = new MatTableDataSource(this.convertionData);

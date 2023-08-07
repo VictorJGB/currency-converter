@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" *ngIf="dataSource">
   <table class="w-100 h-100" mat-table [dataSource]="dataSource" matSort>
     <!-- Data da conversão -->
     <ng-container matColumnDef="convertionDate">

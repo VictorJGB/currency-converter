@@ -8,13 +8,7 @@ import HistoryData from 'src/app/interfaces/history/HistoryData';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  convertionData: HistoryData[] = JSON.parse(
-    sessionStorage.getItem('convertion_data') || ''
-  );
-
-  constructor() {
-    console.log(this.convertionData);
-  }
+  constructor() {}
 
   ngOnInit() {}
 }
