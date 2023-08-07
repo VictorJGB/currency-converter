@@ -86,7 +86,7 @@ export class ConverterComponent implements OnInit {
 
     this.convertionData.push(convertionInfo);
 
-    sessionStorage.setItem(
+    localStorage.setItem(
       'convertion_data',
       JSON.stringify(this.convertionData)
     );

@@ -12,7 +12,7 @@ import HistoryData from 'src/app/interfaces/history/HistoryData';
   styleUrls: ['./history-table.component.scss'],
 })
 export class HistoryTable implements AfterViewInit {
-  storageData = sessionStorage.getItem('convertion_data');
+  storageData = localStorage.getItem('convertion_data');
   displayedColumns: string[] = [
     'convertionDate',
     'convertionTime',
@@ -30,7 +30,7 @@ export class HistoryTable implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
-    if (sessionStorage.getItem('convertion_data')) {
+    if (localStorage.getItem('convertion_data')) {
       this.convertionData = JSON.parse(this.storageData ?? '');
     }
     // Assign the data to the data source for the table to render
