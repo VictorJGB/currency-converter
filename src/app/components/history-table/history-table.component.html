@@ -1,27 +1,57 @@
 <div class="mat-elevation-z8">
   <table class="w-100 h-100" mat-table [dataSource]="dataSource" matSort>
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    <!-- Data da conversão -->
+    <ng-container matColumnDef="convertionDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Data de conversão
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.convertionDate }}</td>
     </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Progress</th>
-      <td mat-cell *matCellDef="let row">{{ row.progress }}%</td>
+    <!-- Hora da conversão -->
+    <ng-container matColumnDef="convertionTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Hora da conversão
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.convertionTime }}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    <!-- Valor informado -->
+    <ng-container matColumnDef="inputValue">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor informado</th>
+      <td mat-cell *matCellDef="let row">{{ row.inputValue }}</td>
     </ng-container>
 
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="fruit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fruit</th>
-      <td mat-cell *matCellDef="let row">{{ row.fruit }}</td>
+    <!-- Moeda de origem -->
+    <ng-container matColumnDef="originCurrency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Moeda de origem</th>
+      <td mat-cell *matCellDef="let row">{{ row.originCurrency }}</td>
+    </ng-container>
+
+    <!-- Moeda de destino -->
+    <ng-container matColumnDef="destinyCurrency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Moeda de destino
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.destinyCurrency }}</td>
+    </ng-container>
+
+    <!-- Resultado -->
+    <ng-container matColumnDef="outputValue">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Resultado</th>
+      <td mat-cell *matCellDef="let row">{{ row.outputValue }}</td>
+    </ng-container>
+
+    <!-- Taxa -->
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Taxa</th>
+      <td mat-cell *matCellDef="let row">{{ row.rate }}</td>
+    </ng-container>
+
+    <!-- Ação -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Ação</th>
+      <td mat-cell *matCellDef="let row">DELETE</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -29,6 +59,7 @@
   </table>
 
   <mat-paginator
+    class="w-100"
     *ngIf="dataSource"
     [pageSizeOptions]="[5, 10, 25]"
     aria-label="Selecione quantos dados serão mostrados"

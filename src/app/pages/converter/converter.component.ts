@@ -70,7 +70,7 @@ export class ConverterComponent implements OnInit {
   protected storeConvertion(responseData: ConvertResponse) {
     let date = new Date();
     let currentDate =
-      date.getDate() + ':' + (date.getMonth() + 1) + ':' + date.getFullYear();
+      date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     let currentTime =
       date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
