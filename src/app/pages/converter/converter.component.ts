@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import ConvertResponse from 'src/app/interfaces/convert/ConvertResponse';
+import HistoryData from 'src/app/interfaces/history/HistoryData';
 import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import Symbol from '../../classes/Symbol';
@@ -20,6 +21,7 @@ export class ConverterComponent implements OnInit {
   responseData!: ConvertResponse;
   isDataReturned!: boolean;
   symbols: Symbol[] = [];
+  convertionData: HistoryData[] = [];
 
   convertForm!: FormGroup;
 
@@ -51,19 +53,43 @@ export class ConverterComponent implements OnInit {
     this.convertForm.disabled;
 
     this.convertCurrency(originCurrency, destinyCurrency, value);
-    console.log(this.responseData);
   }
 
   protected convertCurrency(from: string, to: string, amount: number) {
     this.convertService.convertCoin(from, to, amount, 2).subscribe({
       next: (data: ConvertResponse) => {
-        this.responseData = data;
+        (this.responseData = data), this.storeConvertion(this.responseData);
       },
       error: (error: Error) => console.log(error),
       complete: () => {
         this.isDataReturned = true;
       },
     });
+  }
+
+  protected storeConvertion(responseData: ConvertResponse) {
+    let date = new Date();
+    let currentDate =
+      date.getDate() + ':' + (date.getMonth() + 1) + ':' + date.getFullYear();
+    let currentTime =
+      date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+    let convertionInfo: HistoryData = {
+      convertionDate: currentDate,
+      convertionTime: currentTime,
+      inputValue: responseData.query.amount,
+      outputValue: responseData.result,
+      originCurrency: responseData.query.from,
+      destinyCurrency: responseData.query.to,
+      rate: responseData.info.rate,
+    };
+
+    this.convertionData.push(convertionInfo);
+
+    sessionStorage.setItem(
+      'convertion_data',
+      JSON.stringify(this.convertionData)
+    );
   }
 
   protected listCoins() {
