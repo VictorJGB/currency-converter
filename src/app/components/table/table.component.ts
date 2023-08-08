@@ -49,7 +49,7 @@ export class TableComponent implements AfterViewInit {
     });
   }
 
-  applyFilter(event: Event) {
+  protected applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
