@@ -20,7 +20,8 @@ import { HistoryComponent } from './pages/history/history.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TableComponent } from './components/table/table.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HistoryTable } from './components/history-table/history-table.component';
+import { HistoryTableComponent } from './components/history-table/history-table.component';
+import { HistoryDialogComponent } from './components/history-dialog/history-dialog.component';
 
 // SVG Icons
 import { AngularIconComponent } from './components/angular-icon/angular-icon.component';
@@ -42,6 +43,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -58,7 +60,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AngularIconComponent,
     BootstrapIconComponent,
     GithubIconComponent,
-    HistoryTable,
+    HistoryTableComponent,
+    HistoryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatCardModule,
+    MatDialogModule,
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
