@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-history-dialog',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history-dialog.component.scss'],
 })
 export class HistoryDialogComponent implements OnInit {
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {}
+
+  protected deleteItem() {
+    this.dialog.closeAll();
+  }
 }

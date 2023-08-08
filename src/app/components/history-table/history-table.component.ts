@@ -4,10 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { HistoryDialogComponent } from '../history-dialog/history-dialog.component';
 
 import HistoryData from 'src/app/interfaces/history/HistoryData';
-
-import { HistoryDialogComponent } from '../history-dialog/history-dialog.component';
 
 @Component({
   selector: 'app-history-table',
@@ -48,9 +47,5 @@ export class HistoryTableComponent implements AfterViewInit {
 
   protected openDialog() {
     this.dialog.open(HistoryDialogComponent);
-  }
-
-  protected deleteRegistryItem() {
-    this.openDialog();
   }
 }

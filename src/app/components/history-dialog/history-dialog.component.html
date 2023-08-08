@@ -1,7 +1,9 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
+<h1 mat-dialog-title>Deletar item</h1>
 <div mat-dialog-content>
-  This dialog showcases the title, close, content and actions elements.
+  <p>Esta ação é <strong>irreversível</strong></p>
+  <p>Você realmente deseja deletar este item?</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button color="warn" mat-raised-button (click)="deleteItem()">Deletar</button>
+  <button color="white" mat-stroked-button mat-dialog-close>Cancelar</button>
 </div>
