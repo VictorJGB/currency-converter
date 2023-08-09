@@ -1,6 +1,13 @@
-<div class="mat-elevation-z8" *ngIf="convertionData[0]">
-  <table class="w-100 h-100" mat-table [dataSource]="dataSource" matSort>
+<div
+  class="mat-elevation-z8 overflow-x-scroll"
+  *ngIf="convertionData.length > 0"
+>
+  <table class="w-100" mat-table [dataSource]="dataSource" matSort>
     <!-- Data da conversão -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Num.</th>
+      <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
+    </ng-container>
     <ng-container matColumnDef="convertionDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Data de conversão

@@ -16,6 +16,7 @@ import HistoryData from 'src/app/interfaces/history/HistoryData';
 export class HistoryTableComponent implements AfterViewInit {
   storageData = localStorage.getItem('convertion_data');
   displayedColumns: string[] = [
+    'id',
     'convertionDate',
     'convertionTime',
     'inputValue',
@@ -50,6 +51,7 @@ export class HistoryTableComponent implements AfterViewInit {
     this.dialog.open(HistoryDialogComponent, {
       data: {
         id: id,
+        isSingleDelete: true,
         jsonData: this.convertionData,
       },
     });

@@ -5,7 +5,8 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import HistoryData from 'src/app/interfaces/history/HistoryData';
 
 export interface DialogData {
-  id: number;
+  id?: number;
+  isSingleDelete?: boolean;
   jsonData: HistoryData[];
 }
 
@@ -22,10 +23,18 @@ export class HistoryDialogComponent implements OnInit {
 
   ngOnInit() {}
 
-  protected deleteItem() {
-    this.data.jsonData.splice(this.data.id, 1);
-    localStorage.removeItem('convertion_data');
-    localStorage.setItem('convertion_data', JSON.stringify(this.data.jsonData));
+  // TODO: Bug when deleting the first index
+  protected DeleteHistory() {
+    if (this.data.isSingleDelete && this.data.id) {
+      this.data.jsonData.splice(this.data.id, 1);
+      localStorage.removeItem('convertion_data');
+      localStorage.setItem(
+        'convertion_data',
+        JSON.stringify(this.data.jsonData)
+      );
+    } else {
+      localStorage.removeItem('convertion_data');
+    }
     this.dialog.closeAll();
     window.location.reload();
   }
