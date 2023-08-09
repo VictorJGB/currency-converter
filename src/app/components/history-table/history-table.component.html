@@ -51,12 +51,12 @@
     <!-- Ação -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ação</th>
-      <td mat-cell *matCellDef="let row">
+      <td mat-cell *matCellDef="let row; let i = index">
         <button
           mat-icon-button
           matTooltip="Deletar item"
           aria-label="Botão para deletar item"
-          (click)="openDialog()"
+          (click)="openDialog(i)"
         >
           <mat-icon color="warn">delete</mat-icon>
         </button>

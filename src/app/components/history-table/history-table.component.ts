@@ -45,7 +45,13 @@ export class HistoryTableComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  protected openDialog() {
-    this.dialog.open(HistoryDialogComponent);
+  protected openDialog(id: number) {
+    this.convertionData = JSON.parse(this.storageData ?? '');
+    this.dialog.open(HistoryDialogComponent, {
+      data: {
+        id: id,
+        jsonData: this.convertionData,
+      },
+    });
   }
 }

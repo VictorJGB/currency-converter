@@ -1,9 +1,25 @@
 <h1 mat-dialog-title>Deletar item</h1>
 <div mat-dialog-content>
-  <p>Esta ação é <strong>irreversível</strong></p>
+  <p>Esta ação é <strong class="text-warn-color">irreversível</strong></p>
   <p>Você realmente deseja deletar este item?</p>
 </div>
 <div mat-dialog-actions>
-  <button color="warn" mat-raised-button (click)="deleteItem()">Deletar</button>
-  <button color="white" mat-stroked-button mat-dialog-close>Cancelar</button>
+  <button
+    color="white"
+    class="fw-semibold"
+    matTooltip="Cancelar ação"
+    mat-raised-button
+    mat-dialog-close
+  >
+    Cancelar
+  </button>
+  <button
+    color="warn"
+    class="fw-semibold"
+    matTooltip="Deletar item"
+    mat-raised-button
+    (click)="deleteItem()"
+  >
+    Deletar
+  </button>
 </div>
