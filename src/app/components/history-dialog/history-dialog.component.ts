@@ -23,7 +23,10 @@ export class HistoryDialogComponent implements OnInit {
   ngOnInit() {}
 
   protected deleteItem() {
+    this.data.jsonData.splice(this.data.id, 1);
+    localStorage.removeItem('convertion_data');
+    localStorage.setItem('convertion_data', JSON.stringify(this.data.jsonData));
     this.dialog.closeAll();
-    console.log(this.data);
+    window.location.reload();
   }
 }
