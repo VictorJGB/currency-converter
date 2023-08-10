@@ -47,7 +47,6 @@ export class HistoryTableComponent implements AfterViewInit {
   }
 
   protected openDialog(id: number) {
-    this.convertionData = JSON.parse(this.storageData ?? '');
     this.dialog.open(HistoryDialogComponent, {
       data: {
         id: id,

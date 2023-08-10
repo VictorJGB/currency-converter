@@ -14,10 +14,10 @@ import { CoinService } from 'src/app/services/coins/coins.service';
 
 @Component({
   selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  templateUrl: './coins-table.component.html',
+  styleUrls: ['./coins-table.component.scss'],
 })
-export class TableComponent implements AfterViewInit {
+export class CoinsTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['code', 'description'];
   symbols: Symbol[] = [];
   dataSource!: MatTableDataSource<Symbol>;

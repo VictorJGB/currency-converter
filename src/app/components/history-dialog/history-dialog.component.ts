@@ -25,17 +25,18 @@ export class HistoryDialogComponent implements OnInit {
 
   // TODO: Bug when deleting the first index
   protected DeleteHistory() {
+    console.log(this.data.isSingleDelete, this.data.id >= 0);
     if (this.data.isSingleDelete && this.data.id) {
-      this.data.jsonData.splice(this.data.id, 1);
-      localStorage.removeItem('convertion_data');
+      this.data.jsonData.splice(this.data.id, 0);
       localStorage.setItem(
         'convertion_data',
         JSON.stringify(this.data.jsonData)
       );
-    } else {
-      localStorage.removeItem('convertion_data');
+    } else if(!this.data.isSingleDelete ) {
+      console.log('else teste');
+      // localStorage.removeItem('convertion_data');
     }
     this.dialog.closeAll();
-    window.location.reload();
+    // window.location.reload();
   }
 }

@@ -1,10 +1,15 @@
-<mat-form-field>
+<mat-form-field [hidden]="!dataSource.data.length">
   <mat-label>Pesquise sua moeda</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. BRL" #input />
 </mat-form-field>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+<div class="mat-elevation-z8 w-100 overflow-y-scroll">
+  <table
+    mat-table
+    *ngIf="dataSource.data.length && dataSource.filteredData.length > 0"
+    [dataSource]="dataSource"
+    matSort
+  >
     <!-- Code Column -->
     <ng-container matColumnDef="code">
       <th
@@ -51,7 +56,7 @@
     [pageSize]="5"
     aria-label="Select page of symbols"
     color="primary"
-    *ngIf="dataSource"
+    [hidden]="!dataSource.data.length"
   ></mat-paginator>
   <mat-spinner *ngIf="!dataSource"></mat-spinner>
 </div>

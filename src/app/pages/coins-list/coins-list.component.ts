@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinService } from '../../services/coins/coins.service';
-import SymbolsResponse from '../../interfaces/symbols/SymbolsResponse';
-import Symbol from 'src/app/classes/Symbol';
 
 @Component({
   selector: 'app-coins-list',

@@ -18,7 +18,7 @@ import { HistoryComponent } from './pages/history/history.component';
 
 // Components import
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { TableComponent } from './components/table/table.component';
+import { CoinsTableComponent } from './components/coins-table/coins-table.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HistoryTableComponent } from './components/history-table/history-table.component';
 import { HistoryDialogComponent } from './components/history-dialog/history-dialog.component';
@@ -52,7 +52,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppComponent,
     ToolbarComponent,
     FooterComponent,
-    TableComponent,
+    CoinsTableComponent,
     HomeComponent,
     CoinsListComponent,
     ConverterComponent,
