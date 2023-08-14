@@ -27,4 +27,8 @@ export class ConvertCurrencyService {
       responseType: 'json',
     });
   }
+
+  checkHighValue(convertFrom: string, convertValue: number, places?: number) {
+    this.convertCoin(convertFrom, convertValue);
+  }
 }

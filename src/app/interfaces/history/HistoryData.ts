@@ -1,4 +1,5 @@
 export default interface HistoryData {
+  isHighValue: boolean;
   convertionDate: string;
   convertionTime: string;
   inputValue: number;

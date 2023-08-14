@@ -22,6 +22,7 @@ export class ConverterComponent implements OnInit {
   isDataReturned!: boolean;
   symbols: Symbol[] = [];
   convertionData: HistoryData[] = [];
+  isHighValue!: boolean;
 
   convertForm!: FormGroup;
 
@@ -41,7 +42,7 @@ export class ConverterComponent implements OnInit {
     this.convertForm = this.formBuilder.group({
       originCurrency: ['', [Validators.required]],
       destinyCurrency: ['', [Validators.required]],
-      convertValue: ['', [Validators.required, Validators.min(1)]],
+      convertValue: ['', [Validators.required, Validators.min(0.01)]],
     });
   }
 
@@ -67,14 +68,35 @@ export class ConverterComponent implements OnInit {
     });
   }
 
+  protected checkHighValue(from: string, amount: number) {
+    let checkParameter = 10000;
+    this.convertService.convertCoin(from, 'USD', amount, 2).subscribe({
+      next: (data: ConvertResponse) => {
+        data.result >= checkParameter
+          ? (this.isHighValue = true)
+          : (this.isHighValue = false);
+      },
+      error: (error: Error) => console.log(error),
+      complete: () => {
+        this.isDataReturned = true;
+      },
+    });
+  }
+
   protected storeConvertion(responseData: ConvertResponse) {
+    let originCurrency = this.convertForm.value.originCurrency;
+    let value = this.convertForm.value.convertValue;
+
     let date = new Date();
     let currentDate =
       date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     let currentTime =
       date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
+    this.checkHighValue(originCurrency, value);
+
     let convertionInfo: HistoryData = {
+      isHighValue: this.isHighValue,
       convertionDate: currentDate,
       convertionTime: currentTime,
       inputValue: responseData.query.amount,

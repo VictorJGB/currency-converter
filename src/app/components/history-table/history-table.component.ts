@@ -17,6 +17,7 @@ export class HistoryTableComponent implements AfterViewInit {
   storageData = localStorage.getItem('convertion_data');
   displayedColumns: string[] = [
     'id',
+    'icon',
     'convertionDate',
     'convertionTime',
     'inputValue',
@@ -39,6 +40,7 @@ export class HistoryTableComponent implements AfterViewInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.convertionData);
+    console.log(this.convertionData);
   }
 
   ngAfterViewInit() {
