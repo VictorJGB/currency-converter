@@ -53,15 +53,14 @@ export class ConverterComponent implements OnInit {
     const value = this.convertForm.value.convertValue;
     this.convertForm.disabled;
 
+    this.checkHighValue(originCurrency, value);
     this.convertCurrency(originCurrency, destinyCurrency, value);
   }
 
   protected convertCurrency(from: string, to: string, amount: number) {
     this.convertService.convertCoin(from, to, amount, 2).subscribe({
       next: (data: ConvertResponse) => {
-        (this.responseData = data),
-          this.checkHighValue(from, amount),
-          this.storeConvertion(this.responseData);
+        (this.responseData = data), this.storeConvertion(this.responseData);
       },
       error: (error: Error) => console.log(error),
       complete: () => {
@@ -90,7 +89,6 @@ export class ConverterComponent implements OnInit {
       date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     let currentTime =
       date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-    console.log(this.isHighValue);
 
     let convertionInfo: HistoryData = {
       isHighValue: this.isHighValue,
