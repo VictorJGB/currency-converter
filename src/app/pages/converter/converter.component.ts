@@ -59,7 +59,9 @@ export class ConverterComponent implements OnInit {
   protected convertCurrency(from: string, to: string, amount: number) {
     this.convertService.convertCoin(from, to, amount, 2).subscribe({
       next: (data: ConvertResponse) => {
-        (this.responseData = data), this.storeConvertion(this.responseData);
+        (this.responseData = data),
+          this.checkHighValue(from, amount),
+          this.storeConvertion(this.responseData);
       },
       error: (error: Error) => console.log(error),
       complete: () => {
@@ -70,30 +72,25 @@ export class ConverterComponent implements OnInit {
 
   protected checkHighValue(from: string, amount: number) {
     let checkParameter = 10000;
-    this.convertService.convertCoin(from, 'USD', amount, 2).subscribe({
-      next: (data: ConvertResponse) => {
-        data.result >= checkParameter
-          ? (this.isHighValue = true)
-          : (this.isHighValue = false);
-      },
-      error: (error: Error) => console.log(error),
-      complete: () => {
-        this.isDataReturned = true;
-      },
-    });
+    this.convertService
+      .checkHighValue(checkParameter, from, amount, 2)
+      .subscribe({
+        next: (data) => {
+          this.isHighValue = data;
+        },
+        error: (error: Error) => {
+          console.log(error);
+        },
+      });
   }
 
   protected storeConvertion(responseData: ConvertResponse) {
-    let originCurrency = this.convertForm.value.originCurrency;
-    let value = this.convertForm.value.convertValue;
-
     let date = new Date();
     let currentDate =
       date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     let currentTime =
       date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-
-    this.checkHighValue(originCurrency, value);
+    console.log(this.isHighValue);
 
     let convertionInfo: HistoryData = {
       isHighValue: this.isHighValue,

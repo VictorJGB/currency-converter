@@ -10,10 +10,15 @@
     </ng-container>
 
     <!-- Ícone da conversão acima de 10k dol -->
-    <ng-container matColumnDef="icon">
+    <ng-container matColumnDef="isHighValue">
       <th mat-header-cell *matHeaderCellDef>Ícone</th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon *ngIf="row.icon" color="primary" fontIcon="paid" />
+        <mat-icon
+          matTooltip="valor converti10k dol"
+          *ngIf="row.isHighValue"
+          color="primary"
+          fontIcon="paid"
+        />
       </td>
     </ng-container>
 
