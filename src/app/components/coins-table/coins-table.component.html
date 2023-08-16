@@ -1,62 +1,67 @@
-<mat-form-field [hidden]="!dataSource.data.length">
-  <mat-label>Pesquise sua moeda</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. BRL" #input />
-</mat-form-field>
+<div class="mat-elevation-z8 position-relative">
+  <mat-form-field [hidden]="!dataSource.data.length">
+    <mat-label>Pesquise sua moeda</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. BRL"
+      #input
+    />
+  </mat-form-field>
 
-<div class="mat-elevation-z8 w-100 overflow-y-scroll">
-  <table
-    mat-table
-    *ngIf="dataSource.data.length && dataSource.filteredData.length > 0"
-    [dataSource]="dataSource"
-    matSort
-  >
-    <!-- Code Column -->
-    <ng-container matColumnDef="code">
-      <th
-        class="fw-bolder fs-6"
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-      >
-        Símbolo
-      </th>
-      <td mat-cell *matCellDef="let row">{{ row.code }}</td>
-    </ng-container>
+  <div class="wrapper w-100 position-relative overflow-auto">
+    <table
+      mat-table
+      *ngIf="dataSource.data.length && dataSource.filteredData.length > 0"
+      [dataSource]="dataSource"
+      matSort
+    >
+      <!-- Code Column -->
+      <ng-container matColumnDef="code">
+        <th
+          class="fw-bolder fs-6"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Símbolo
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+      </ng-container>
 
-    <!-- Description Column -->
-    <ng-container matColumnDef="description">
-      <th
-        class="fw-bolder fs-6"
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-      >
-        Descrição
-      </th>
-      <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-    </ng-container>
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th
+          class="fw-bolder fs-6"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Descrição
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      class="fw-bold fs-1"
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-    ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        class="fw-bold fs-1"
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
 
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell p-2" colspan="4">
-        Nenhum resultado para "{{ input.value }}"
-      </td>
-    </tr>
-  </table>
-
-  <mat-paginator
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell p-2" colspan="4">
+          Nenhum resultado para "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- <mat-paginator
     [pageSizeOptions]="[5, 10, 25]"
     [pageSize]="5"
-    aria-label="Select page of symbols"
+    aria-label="Paginador de moedas"
     color="primary"
     [hidden]="!dataSource.data.length"
-  ></mat-paginator>
-  <mat-spinner *ngIf="!dataSource"></mat-spinner>
+  ></mat-paginator> -->
 </div>

@@ -16,8 +16,6 @@ import HistoryData from 'src/app/interfaces/history/HistoryData';
 export class HistoryTableComponent implements AfterViewInit {
   storageData = localStorage.getItem('convertion_data');
   displayedColumns: string[] = [
-    'id',
-    'isHighValue',
     'convertionDate',
     'convertionTime',
     'inputValue',

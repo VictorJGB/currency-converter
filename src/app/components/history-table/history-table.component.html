@@ -3,25 +3,6 @@
   *ngIf="convertionData.length > 0"
 >
   <table class="w-100" mat-table [dataSource]="dataSource" matSort>
-    <!-- Id da conversão -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Num.</th>
-      <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
-    </ng-container>
-
-    <!-- Ícone da conversão acima de 10k dol -->
-    <ng-container matColumnDef="isHighValue">
-      <th mat-header-cell *matHeaderCellDef>Ícone</th>
-      <td mat-cell *matCellDef="let row">
-        <mat-icon
-          matTooltip="valor converti10k dol"
-          *ngIf="row.isHighValue"
-          color="primary"
-          fontIcon="paid"
-        />
-      </td>
-    </ng-container>
-
     <!-- Data da conversão -->
     <ng-container matColumnDef="convertionDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -61,7 +42,15 @@
     <!-- Resultado -->
     <ng-container matColumnDef="outputValue">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Resultado</th>
-      <td mat-cell *matCellDef="let row">{{ row.outputValue }}</td>
+      <td mat-cell *matCellDef="let row">
+        {{ row.outputValue }}
+        <mat-icon
+          matTooltip="+10k dol"
+          *ngIf="row.isHighValue"
+          color="primary"
+          fontIcon="paid"
+        />
+      </td>
     </ng-container>
 
     <!-- Taxa -->

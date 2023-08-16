@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoinService } from '../../services/coins/coins.service';
+import { LoaderService } from './../../services/loader/loader.service';
 
 @Component({
   selector: 'app-coins-list',
@@ -7,7 +7,7 @@ import { CoinService } from '../../services/coins/coins.service';
   styleUrls: ['./coins-list.component.scss'],
 })
 export class CoinsListComponent implements OnInit {
-  constructor(private coinService: CoinService) {}
+  constructor() {}
 
   ngOnInit() {}
 }
