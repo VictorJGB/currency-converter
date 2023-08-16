@@ -1,4 +1,5 @@
 <div class="mat-elevation-z8 position-relative">
+  <mat-spinner *ngIf="loader.isLoading | async"></mat-spinner>
   <mat-form-field [hidden]="!dataSource.data.length">
     <mat-label>Pesquise sua moeda</mat-label>
     <input
@@ -57,11 +58,10 @@
       </tr>
     </table>
   </div>
-  <!-- <mat-paginator
+  <mat-paginator
     [pageSizeOptions]="[5, 10, 25]"
-    [pageSize]="5"
     aria-label="Paginador de moedas"
     color="primary"
-    [hidden]="!dataSource.data.length"
-  ></mat-paginator> -->
+    showFirstLastButtons
+  ></mat-paginator>
 </div>

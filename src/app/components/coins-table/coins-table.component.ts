@@ -7,6 +7,7 @@ import Symbol from 'src/app/classes/Symbol';
 import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -25,9 +26,11 @@ export class CoinsTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private coinService: CoinService) {
+  constructor(
+    private coinService: CoinService,
+    protected loader: LoaderService
+  ) {
     this.listCoins();
-    this.dataSource = new MatTableDataSource(this.symbols);
   }
 
   ngOnInit() {}
@@ -46,6 +49,9 @@ export class CoinsTableComponent implements AfterViewInit {
         });
       },
       error: (error) => console.log(error),
+      complete: () => {
+        this.dataSource = new MatTableDataSource(this.symbols);
+      },
     });
   }
 
