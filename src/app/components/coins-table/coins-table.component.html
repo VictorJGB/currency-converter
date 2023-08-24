@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8 position-relative">
   <mat-spinner *ngIf="loader.isLoading | async"></mat-spinner>
-  <mat-form-field [hidden]="!dataSource.data.length">
+  <mat-form-field id="filter-input" [hidden]="!dataSource.data.length">
     <mat-label>Pesquise sua moeda</mat-label>
     <input
       matInput
@@ -13,7 +13,7 @@
   <div class="wrapper w-100 position-relative overflow-auto">
     <table
       mat-table
-      *ngIf="dataSource.data.length && dataSource.filteredData.length > 0"
+      *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length > 0"
       [dataSource]="dataSource"
       matSort
     >
