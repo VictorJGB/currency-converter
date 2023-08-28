@@ -1,9 +1,14 @@
 /* tslint:disable:no-unused-variable */
+import { of } from 'rxjs';
 
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 
-import { HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+
+import { HttpClient } from '@angular/common/http';
 
 import { CoinService } from './coins.service';
 
@@ -15,39 +20,46 @@ import { API_BASE_URL } from 'src/env/environment';
 
 fdescribe('Service: Coins', () => {
   let service: CoinService;
-  let testURl = `${API_BASE_URL}/symbols`;
   let httpTestController: HttpTestingController;
+  let testURl = `${API_BASE_URL}/symbols`;
 
   beforeEach(() => {
+    service = TestBed.inject(CoinService);
+    httpTestController = TestBed.inject(HttpTestingController);
+
     TestBed.configureTestingModule({
-      providers: [CoinService, HttpClient, HttpHandler],
+      imports: [HttpClientTestingModule],
+      providers: [CoinService],
     });
   });
 
-  it('should ...', inject([CoinService], (service: CoinService) => {
+  it('should ...', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
-  it('should get coins list', waitForAsync(() => {
-    const req = httpTestController.expectOne(testURl);
-
-    // Converting object data to array
-    const mockData: SymbolType[] = [];
-    Object.entries(COINS_RESPONSE).forEach(([key, value]) => {
-      mockData.push({
-        description: value.description,
-        code: value.code,
+  describe('getCoins()', () => {
+    it('should return coins list', (done: DoneFn) => {
+      // Converting object data to array
+      const mockData: SymbolType[] = [];
+      Object.entries(COINS_RESPONSE).forEach(([key, value]) => {
+        mockData.push({
+          description: value.description,
+          code: value.code,
+        });
       });
+
+      service.getCoins().subscribe((data) => {
+        expect(data).toEqual(mockData);
+        done();
+      });
+
+      const request = httpTestController.expectOne(testURl);
+      request.flush(mockData);
+      expect(request.request.method).toBe('GET');
     });
 
-    service.getCoins().subscribe((data) => {
-      expect(data).toEqual(mockData);
+    afterAll(() => {
+      httpTestController.verify();
     });
-
-    expect(req.request.method).toEqual('GET');
-  }));
-
-  afterAll(() => {
-    httpTestController.verify();
   });
 });
