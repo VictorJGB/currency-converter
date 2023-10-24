@@ -70,7 +70,7 @@ Demo: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank"
    ```
 3. Run the project
    ```sh
-   npm run dev
+   npm start
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
