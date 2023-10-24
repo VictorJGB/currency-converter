@@ -46,7 +46,6 @@ An online currency converter made with angular + typescript integrated with an A
 ## Demo
 
 Demo: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank">currency-converter</a>
-API: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank">currency-converter</a>
 
 <!-- GETTING STARTED -->
 
