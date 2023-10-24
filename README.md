@@ -28,21 +28,15 @@
 
 ## About The Project
 
-project description
+An online currency converter made with angular + typescript integrated with an API to carry out your operations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 - ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-- ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
-- ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- Angular
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -50,7 +44,7 @@ project description
 
 ## Demo
 
-demo url
+Demo: link
 
 <!-- GETTING STARTED -->
 
@@ -67,13 +61,16 @@ demo url
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/VictorJGB/repo_name
+   git clone https://github.com/VictorJGB/currency-converter
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-
+3. Run the project
+   ```sh
+   npm run dev
+   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
