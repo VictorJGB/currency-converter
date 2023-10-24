@@ -37,6 +37,7 @@ An online currency converter made with angular + typescript integrated with an A
 - ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 - ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+- ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -45,6 +46,7 @@ An online currency converter made with angular + typescript integrated with an A
 ## Demo
 
 Demo: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank">currency-converter</a>
+API: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank">currency-converter</a>
 
 <!-- GETTING STARTED -->
 
@@ -76,8 +78,10 @@ Demo: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank"
 <!-- USAGE EXAMPLES -->
 
 ## Usage
-
-techs version used in the project
+- Angular: 16.1.6
+- Typescript: 5.1.3
+- Bootstrap: ^5.3.1
+- Angular Material: 16.1.6
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
