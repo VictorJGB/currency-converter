@@ -36,7 +36,7 @@ An online currency converter made with angular + typescript integrated with an A
 
 - ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-- Angular
+- ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -44,7 +44,7 @@ An online currency converter made with angular + typescript integrated with an A
 
 ## Demo
 
-Demo: link
+Demo: <a href="https://currency-converter-alpha-one.vercel.app/" target="_blank">currency-converter</a>
 
 <!-- GETTING STARTED -->
 
