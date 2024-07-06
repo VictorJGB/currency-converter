@@ -1,6 +1,6 @@
 {
-  "name": "challenge-04",
-  "version": "0.0.0",
+  "name": "currency-converter",
+  "version": "2.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -32,6 +32,7 @@
     "@angular/compiler-cli": "^16.1.0",
     "@angular/flex-layout": "15.0.0-beta.42",
     "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "jquery": "^3.7.0",

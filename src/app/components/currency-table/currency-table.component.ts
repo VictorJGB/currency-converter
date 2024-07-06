@@ -8,6 +8,7 @@ import Currency from 'src/app/interfaces/Currency';
 import { CurrencyService } from '../../services/currency/currency.service';
 
 
+import { TranslateService } from '@ngx-translate/core';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 
 /**
@@ -29,9 +30,12 @@ export class CurrenciesTableComponent implements AfterViewInit {
 
   constructor(
     private currencyService: CurrencyService,
-    protected loader: LoaderService
+    protected loader: LoaderService,
+    private translate: TranslateService,
   ) {
     this.listCurrencies();
+    this.translate.setDefaultLang('pt')
+    this.translate.use('pt')
   }
 
   ngOnInit() {}
