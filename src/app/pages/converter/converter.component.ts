@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import ConvertResponse from 'src/app/interfaces/convert/ConvertResponse';
+import Currency from 'src/app/interfaces/Currency';
 import HistoryData from 'src/app/interfaces/history/HistoryData';
-import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
-import Symbol from '../../classes/Symbol';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 import { ConvertCurrencyService } from 'src/app/services/convertCurrency/convert-currency.service';
@@ -20,7 +19,7 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 export class ConverterComponent implements OnInit {
   responseData!: ConvertResponse;
   isDataReturned!: boolean;
-  symbols: Symbol[] = [];
+  currencies: Currency[] = [];
   convertionData: HistoryData[] = [];
   isHighValue!: boolean;
 
@@ -111,11 +110,8 @@ export class ConverterComponent implements OnInit {
 
   protected listCoins() {
     this.coinService.getCoins().subscribe({
-      next: (data: SymbolType[]) => {
-        data.map((symbol: SymbolType) => {
-          const newSymbol = new Symbol(symbol.description, symbol.code);
-          this.symbols.push(newSymbol);
-        });
+      next: (data) => {
+        console.log(data)
       },
       error: (error) => console.log(error),
     });

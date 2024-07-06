@@ -1,4 +1,4 @@
-export default interface SymbolType {
+export default interface Currency {
   description: string;
   code: string;
 }

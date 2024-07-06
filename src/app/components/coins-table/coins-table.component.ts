@@ -2,9 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import Currency from 'src/app/interfaces/Currency';
 
-import Symbol from 'src/app/classes/Symbol';
-import SymbolType from 'src/app/interfaces/symbols/SymbolType';
 
 import { CoinService } from 'src/app/services/coins/coins.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
@@ -20,8 +19,8 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 })
 export class CoinsTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['code', 'description'];
-  symbols: Symbol[] = [];
-  dataSource!: MatTableDataSource<Symbol>;
+  currencies: Currency[] = [];
+  dataSource!: MatTableDataSource<Currency>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -42,15 +41,17 @@ export class CoinsTableComponent implements AfterViewInit {
 
   protected listCoins() {
     this.coinService.getCoins().subscribe({
-      next: (data: SymbolType[]) => {
-        data.map((symbol: SymbolType) => {
-          const newSymbol = new Symbol(symbol.description, symbol.code);
-          this.symbols.push(newSymbol);
-        });
+      next: (data) => {
+        for (const [key, value] of Object.entries(data)){
+          this.currencies.push({
+            code: key,
+            description: value,
+          });
+        }
       },
       error: (error) => console.log(error),
       complete: () => {
-        this.dataSource = new MatTableDataSource(this.symbols);
+        this.dataSource = new MatTableDataSource(this.currencies);
       },
     });
   }
