@@ -31,6 +31,7 @@
     "@angular/cli": "~16.1.5",
     "@angular/compiler-cli": "^16.1.0",
     "@angular/flex-layout": "15.0.0-beta.42",
+    "@ngx-translate/core": "^15.0.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "jquery": "^3.7.0",

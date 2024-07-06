@@ -1,18 +1,18 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoinsTableComponent } from './coins-table.component';
+import { CurrenciesTableComponent } from './currency-table.component';
 
 describe('TableComponent', () => {
-  let component: CoinsTableComponent;
-  let fixture: ComponentFixture<CoinsTableComponent>;
+  let component: CurrenciesTableComponent;
+  let fixture: ComponentFixture<CurrenciesTableComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CoinsTableComponent],
+      declarations: [CurrenciesTableComponent],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
@@ -23,7 +23,7 @@ describe('TableComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CoinsTableComponent);
+    fixture = TestBed.createComponent(CurrenciesTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

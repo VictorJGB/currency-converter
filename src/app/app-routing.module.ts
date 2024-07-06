@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from 'src/app/pages/home/home.component';
-import { CoinsListComponent } from 'src/app/pages/coins-list/coins-list.component';
 import { ConverterComponent } from 'src/app/pages/converter/converter.component';
 import { HistoryComponent } from 'src/app/pages/history/history.component';
+import { HomeComponent } from 'src/app/pages/home/home.component';
+import { CurrencyListComponent } from './pages/currency-list/currency-list.component';
 
 const routes: Routes = [
   {
@@ -13,9 +13,9 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'coins',
+    path: 'currencies',
     title: 'Listagem | Conversor de moedas',
-    component: CoinsListComponent,
+    component: CurrencyListComponent,
   },
   {
     path: 'converter',

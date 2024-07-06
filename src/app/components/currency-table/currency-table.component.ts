@@ -2,10 +2,12 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
+// currency
 import Currency from 'src/app/interfaces/Currency';
+import { CurrencyService } from '../../services/currency/currency.service';
 
 
-import { CoinService } from 'src/app/services/coins/coins.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 
 /**
@@ -14,10 +16,10 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-table',
-  templateUrl: './coins-table.component.html',
-  styleUrls: ['./coins-table.component.scss'],
+  templateUrl: './currency-table.component.html',
+  styleUrls: ['./currency-table.component.scss'],
 })
-export class CoinsTableComponent implements AfterViewInit {
+export class CurrenciesTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['code', 'description'];
   currencies: Currency[] = [];
   dataSource!: MatTableDataSource<Currency>;
@@ -26,10 +28,10 @@ export class CoinsTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private coinService: CoinService,
+    private currencyService: CurrencyService,
     protected loader: LoaderService
   ) {
-    this.listCoins();
+    this.listCurrencies();
   }
 
   ngOnInit() {}
@@ -39,8 +41,8 @@ export class CoinsTableComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  protected listCoins() {
-    this.coinService.getCoins().subscribe({
+  protected listCurrencies() {
+    this.currencyService.getCurrencies().subscribe({
       next: (data) => {
         for (const [key, value] of Object.entries(data)){
           this.currencies.push({

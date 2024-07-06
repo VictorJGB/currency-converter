@@ -7,10 +7,10 @@ import { API_BASE_URL } from 'src/env/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class CoinService {
+export class CurrencyService {
   constructor(private http: HttpClient) {}
 
-  public getCoins() {
+  public getCurrencies() {
     return this.http
       .get(`${API_BASE_URL}/currencies`, {
       })

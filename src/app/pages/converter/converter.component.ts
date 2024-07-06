@@ -7,8 +7,8 @@ import Currency from 'src/app/interfaces/Currency';
 import HistoryData from 'src/app/interfaces/history/HistoryData';
 
 
-import { CoinService } from 'src/app/services/coins/coins.service';
 import { ConvertCurrencyService } from 'src/app/services/convertCurrency/convert-currency.service';
+import { CurrencyService } from 'src/app/services/currency/currency.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
@@ -28,10 +28,10 @@ export class ConverterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private convertService: ConvertCurrencyService,
-    private coinService: CoinService,
+    private currencyService: CurrencyService,
     protected loaderService: LoaderService
   ) {
-    this.listCoins();
+    this.listCurrencies();
     this.createForm();
   }
 
@@ -108,10 +108,15 @@ export class ConverterComponent implements OnInit {
     );
   }
 
-  protected listCoins() {
-    this.coinService.getCoins().subscribe({
+  protected listCurrencies() {
+    this.currencyService.getCurrencies().subscribe({
       next: (data) => {
-        console.log(data)
+        for (const [key, value] of Object.entries(data)){
+          this.currencies.push({
+            code: key,
+            description: value,
+          });
+        }
       },
       error: (error) => console.log(error),
     });
